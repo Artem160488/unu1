@@ -1,0 +1,28 @@
+[
+  {
+    "url": "https://example.com",
+    "action": "click",
+    "selector": "h1"
+  },
+  {
+    "url": "https://example.com",
+    "action": "scroll",
+    "value": 300
+  },
+  {
+    "url": "https://www.wikipedia.org",
+    "action": "click",
+    "selector": "strong"
+  },
+  {
+    "url": "https://www.wikipedia.org",
+    "action": "wait",
+    "value": 2
+  },
+  {
+    "url": "https://www.wikipedia.org",
+    "action": "type",
+    "selector": "input#searchInput",
+    "value": "Puppeteer demo"
+  }
+]

@@ -1,0 +1,55 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>UNU Electron Demo</title>
+  <style>
+    body{font-family: Arial; margin:20px;}
+    #log{white-space:pre-wrap; background:#f4f4f4; padding:10px; height:450px; overflow:auto; border-radius:6px;}
+    button{margin-right:8px; padding:8px 12px;}
+  </style>
+</head>
+<body>
+  <h1>UNU Electron Demo (select Chrome)</h1>
+  <p>
+    <button id="choose">Выбрать Chrome</button>
+    <button id="run">Запустить задания</button>
+  </p>
+  <div id="config">Загрузка конфигурации...</div>
+  <h3>Лог:</h3>
+  <div id="log"></div>
+
+<script>
+const chooseBtn = document.getElementById('choose');
+const runBtn = document.getElementById('run');
+const cfgDiv = document.getElementById('config');
+const logDiv = document.getElementById('log');
+
+window.electronAPI.getConfig().then(cfg=>{
+  if (cfg && cfg.chromePath) cfgDiv.innerText = 'Chrome: ' + cfg.chromePath;
+  else cfgDiv.innerText = 'Chrome не указан.';
+});
+
+chooseBtn.onclick = async ()=>{
+  const p = await window.electronAPI.chooseChrome();
+  if (p) cfgDiv.innerText = 'Chrome: ' + p;
+};
+
+runBtn.onclick = async ()=>{
+  logDiv.innerText = '';
+  appendLog('Запуск задач...');
+  await window.electronAPI.runTasks();
+  appendLog('runTasks завершён.');
+};
+
+function appendLog(s){
+  logDiv.innerText += s + '\n';
+  logDiv.scrollTop = logDiv.scrollHeight;
+}
+
+window.electronAPI.onLog((msg)=>appendLog(msg));
+
+</script>
+</body>
+</html>
