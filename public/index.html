@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>UNU Training</title>
+</head>
+<body>
+  <h1>UNU Training</h1>
+  <div id="tasks"></div>
+  <script>
+    async function loadTasks() {
+      const res = await fetch('/api/v1/tasks');
+      const tasks = await res.json();
+      document.getElementById('tasks').innerHTML = tasks.map(t => `<div>${t.id}: ${t.title} - ${t.status}</div>`).join('');
+    }
+    loadTasks();
+  </script>
+</body>
+</html>
