@@ -1,0 +1,12 @@
+[
+    {
+        "url": "https://example.com",
+        "action": "click",
+        "selector": "h1"
+    },
+    {
+        "url": "https://www.wikipedia.org",
+        "action": "click",
+        "selector": "strong"
+    }
+]
