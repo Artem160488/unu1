@@ -1,20 +1,13 @@
 {
   "name": "unu-training",
   "version": "1.0.0",
-  "description": "Local training interface",
+  "description": "Training automation bot",
   "main": "server.js",
+  "bin": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "lowdb": "^1.0.0",
-    "open": "^8.4.0"
-  },
-  "pkg": {
-    "assets": [
-      "public/**/*",
-      "data.json"
-    ]
+    "express": "^4.18.2"
   }
 }
